@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flugzeug-Forum</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; }
+  header { background: #004080; color: white; padding: 1rem; text-align: center; }
+  h1 { margin: 0; font-size: 2rem; }
+  main { padding: 2rem; max-width: 1000px; margin: auto; }
+  .aircraft-card { background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+  .aircraft-card h2 { margin-top: 0; color: #004080; }
+  .aircraft-card p { margin: 0.2rem 0; }
+  .weapon-list { list-style: square inside; padding-left: 0; }
+  footer { text-align: center; padding: 1rem; background: #004080; color: white; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Flugzeug-Forum</h1>
+  <p>Technische Daten & Bewaffnung – Nur zum Anschauen</p>
+</header>
+<main id="aircraft-container">
+  <!-- Flugzeuge werden hier angezeigt -->
+</main>
+<footer>
+  &copy; 2026 Flugzeug-Forum
+</footer>
+
+<script>
+// Hier kommen die Flugzeugdaten
+const aircraftData = [
+  {
+    name: "F-16 Fighting Falcon",
+    manufacturer: "Lockheed Martin",
+    country: "USA",
+    type: "Fighter",
+    first_flight: 1974,
+    max_speed: "2414 km/h",
+    range: "4220 km",
+    crew: 1,
+    weapons: ["AIM-9 Sidewinder (Air-to-Air)", "M61 Vulcan (Cannon)"],
+    description: "Mehrzweckkampfflugzeug, weltweit im Einsatz."
+  },
+  {
+    name: "Su-27 Flanker",
+    manufacturer: "Sukhoi",
+    country: "Russland",
+    type: "Fighter",
+    first_flight: 1977,
+    max_speed: "2500 km/h",
+    range: "3500 km",
+    crew: 1,
+    weapons: ["R-73 (Air-to-Air)", "GSh-30-1 (Cannon)"],
+    description: "Russisches Mehrzweckkampfflugzeug."
+  },
+  {
+    name: "B-2 Spirit",
+    manufacturer: "Northrop Grumman",
+    country: "USA",
+    type: "Bomber",
+    first_flight: 1989,
+    max_speed: "1010 km/h",
+    range: "11000 km",
+    crew: 2,
+    weapons: ["Bombe Mark 84", "Bombe GBU-31"],
+    description: "Tarnkappenbomber, strategische Einsätze."
+  }
+];
+
+// Funktion zum Anzeigen
+const container = document.getElementById("aircraft-container");
+
+aircraftData.forEach(ac => {
+  const card = document.createElement("div");
+  card.className = "aircraft-card";
+  card.innerHTML = `
+    <h2>${ac.name}</h2>
+    <p><strong>Hersteller:</strong> ${ac.manufacturer}</p>
+    <p><strong>Land:</strong> ${ac.country}</p>
+    <p><strong>Typ:</strong> ${ac.type}</p>
+    <p><strong>Erstflug:</strong> ${ac.first_flight}</p>
+    <p><strong>Geschwindigkeit:</strong> ${ac.max_speed}</p>
+    <p><strong>Reichweite:</strong> ${ac.range}</p>
+    <p><strong>Besatzung:</strong> ${ac.crew}</p>
+    <p><strong>Bewaffnung:</strong></p>
+    <ul class="weapon-list">
+      ${ac.weapons.map(w => `<li>${w}</li>`).join("")}
+    </ul>
+    <p>${ac.description}</p>
+  `;
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>
